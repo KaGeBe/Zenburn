@@ -193,6 +193,11 @@ if ! exists("g:zenburn_enable_TagHighlight")
     let g:zenburn_enable_TagHighlight = 0
 endif
 
+if ! exists("g:zenburn_transparent_background")
+    let g:zenburn_transparent_background = 0
+endif
+
+
 " -----------------------------------------------
 
 set background=dark
@@ -329,7 +334,11 @@ if &t_Co > 255
     hi PMenuSel   ctermfg=223 ctermbg=235
 
     if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
+        if exists("g:zenburn_transparent_background") && g:zenburn_transparent_background
+            hi Normal ctermfg=188
+        else
         hi Normal ctermfg=188 ctermbg=234
+        endif
         hi NonText         ctermfg=238
 
         if exists("g:zenburn_color_also_Ignore") && g:zenburn_color_also_Ignore
@@ -347,7 +356,11 @@ if &t_Co > 255
 
         hi ColorColumn     ctermbg=235
     else
+        if exists("g:zenburn_transparent_background") && g:zenburn_transparent_background
+            hi Normal ctermfg=188
+        else
         hi Normal ctermfg=188 ctermbg=237
+        endif
         hi Cursor          ctermbg=109
         hi diffadd         ctermbg=237
         hi diffdelete      ctermbg=238
