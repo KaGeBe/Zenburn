@@ -43,7 +43,7 @@
 "                         parameters
 "  - Clayton Parker (claytron) - Convinced by Kurt Maier to use Zenburn. Point
 "    out issues with LineNr, fix directory styles, and their usage in MacVim.
-"  - Paweł Piekarski - Spotted bad FoldColumn and TabLine. Made better 
+"  - Paweł Piekarski - Spotted bad FoldColumn and TabLine. Made better
 "                      FoldColumn colors, fixed TabLine colors.
 "  - Jim - Fix for missing Include group for terminal
 "  - Peter (Sakartu) - ColorColumn fixes
@@ -114,7 +114,7 @@
 "
 " * New (dark) Visual coloring has been introduced.
 "   The dark Visual is more aligned with the rest of the colour scheme,
-"   especially if you use line numbers. If you wish to use the 
+"   especially if you use line numbers. If you wish to use the
 "   old Visual coloring, use
 "
 "      let g:zenburn_old_Visual = 1
@@ -138,7 +138,7 @@
 " * To turn the parameter(s) back to defaults, use UNLET or set them to 0:
 "
 "      unlet g:zenburn_alternate_Include
-"   or 
+"   or
 "      let g:zenburn_alternate_Include = 0
 "
 "
@@ -486,10 +486,18 @@ if exists("g:zenburn_old_Visual") && g:zenburn_old_Visual
         " gui=none fixes weird highlight problem in at least GVim 7.0.66, thanks to Kurt Maier
         hi Visual          guifg=#000000 guibg=#71d3b4 gui=none
         hi VisualNOS       guifg=#000000 guibg=#71d3b4 gui=none
+        if &t_Co > 255
+          hi Visual        ctermfg=000 ctermbg=116
+          hi VisualNOS     ctermfg=000 ctermbg=116
+        endif
     else
         " use default visual
         hi Visual          guifg=#233323 guibg=#71d3b4 gui=none
         hi VisualNOS       guifg=#233323 guibg=#71d3b4 gui=none
+        if &t_Co > 255
+          hi Visual        ctermfg=237 ctermbg=116
+          hi VisualNOS     ctermfg=237 ctermbg=116
+        endif
     endif
 else
     " new Visual style
